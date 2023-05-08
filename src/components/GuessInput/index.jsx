@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function GuessInput() {
+export function GuessInput({ setGuesses }) {
   const [guess, setGuess] = useState("");
   return (
     <form
@@ -8,6 +8,7 @@ export function GuessInput() {
       onSubmit={(event) => {
         event.preventDefault();
         console.log({ guess });
+        setGuesses(guess);
         setGuess("");
       }}
     >
