@@ -5,6 +5,7 @@ import { GuessInput } from "../GuessInput";
 import { Guess } from "../Guess";
 import { range } from "../../utils";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
+import { checkGuess } from "../../game-helpers";
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -20,7 +21,13 @@ function Game() {
     <>
       <section className="guess-results">
         {range(NUM_OF_GUESSES_ALLOWED).map((num) => {
-          return <Guess key={num} value={guesses[num] ?? "     "} />;
+          return (
+            <Guess
+              key={num}
+              value={guesses[num] ?? "     "}
+              cellClass={checkGuess(guesses[num], answer)}
+            />
+          );
         })}
       </section>
       <GuessInput setGuesses={addGuesses} />
