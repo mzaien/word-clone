@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { sample } from "../../utils";
 import { WORDS } from "../../data";
 import { GuessInput } from "../GuessInput";
-import { GuessList } from "../GuessList";
+import { Guess } from "../Guess";
+import { range } from "../../utils";
+import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
+
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
 // To make debugging easier, we'll log the solution in the console.
@@ -15,7 +18,11 @@ function Game() {
   }
   return (
     <>
-      <GuessList guesses={guesses} />
+      <section className="guess-results">
+        {range(NUM_OF_GUESSES_ALLOWED).map((num) => {
+          return <Guess key={num} value={guesses[num] ?? "     "} />;
+        })}
+      </section>
       <GuessInput setGuesses={addGuesses} />
     </>
   );
