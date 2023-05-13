@@ -164,12 +164,15 @@ ol{
   padding: 8px 16px;
   outline-offset: 4px;
 }
-
+.guess-input-wrapper input:disabled{
+  opacity: 0.8;
+  cursor: not-allowed;
+  border: 2px solid var(--color-gray-700);
+}
 .banner {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 0;
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
